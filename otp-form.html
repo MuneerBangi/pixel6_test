@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="text">
+        <h3>Dear, <span id="name">
+        </h3>
+        <p>Thank you for your inquiry. A 4 digit verification number has been sent to your phone number: <span id="number">, please enter in the following box and submit for confirmation: </p>
+        <input type="hidden" id="otp1">
+        <input type="text" id="otp">
+        <br>
+        <input type="button" id="myButton" value="Verify OTP">
+      </div>
+    </div>
+
+    <!-- JavaScript Code -->
+    <script>
+     
+      var count = 0;
+      
+      //Get value from Local Storage
+      const name = localStorage.getItem('Fname');
+      const number = localStorage.getItem('Number');
+      var otpNum = localStorage.getItem('OTP');
+      document.getElementById('name').innerHTML = name; //display Name 
+      document.getElementById('number').innerHTML = number; //display Number
+     
+      //Check for OTP Validation
+      document.getElementById("myButton").onclick = function() {
+        var otp1 = document.getElementById("otp1");
+        var otp = document.getElementById("otp").value;
+        if (otp == otpNum) {
+          location.href = "http://pixel6.co";
+        } else {
+          document.getElementById('otp').value = " ";
+          count++;
+        }
+        if (count > 2) {
+          location.href = "http://pixel6.co/404";
+        }
+      }
+     
+    </script>
+  </body>
+</html>

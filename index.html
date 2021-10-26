@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <form action="" id="form1" class="active">
+        <h1>Registration Form</h1>
+        <label for="fname">Full name</label>
+        <br>
+        <input type="text" name="username" id="username" placeholder="Username">
+        <span id="textname"></span>
+        <br>
+        <label for="lname">Email</label>
+        <br>
+        <input type="text" name="email" id="email" placeholder="Email">
+        <span id="textemail"></span>
+        <br>
+        <label for="lname">Phone No</label>
+        <br>
+        <input id="phoneField" type="text " placeholder="Number">
+        <span id="text"></span>
+        <span id="text1"></span>
+        <br>
+        <input type="button" onclick="myFunction()" id="btn" value="Submit form">
+      </form>
+    </div>
+    
+    <!-- JavaScript Code -->
+    <script>
+      
+      //User Name Validation
+      var nameField = document.getElementById('username');
+      nameField.addEventListener('keyup', function() {
+        var namevalue = nameField.value;
+        re = /[A-Za-z]/; //expression for Name
+        if (re.test(nameField.value.trim())) {
+          document.getElementById("textname").innerHTML = "name Validate";
+          document.getElementById("textname").style.color="Green";
+        } else {
+          document.getElementById("textname").innerHTML = "Please enter valid name ";
+          document.getElementById("textname").style.color="Red";
+        }
+        if (namevalue.length < 4) {
+          document.getElementById("textname").innerHTML = "name should be greater than 4 char";
+          document.getElementById("textname").style.color="Red";
+        }
+      });
+
+      //Email Validation
+      var emailField = document.getElementById('email');
+      emailField.addEventListener('keyup', function() {
+        re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/; //expression for Email
+        if (re.test(emailField.value.trim())) {
+          document.getElementById("textemail").innerHTML = "Email Validate";
+          document.getElementById("textemail").style.color="Green";
+        } else {
+          document.getElementById("textemail").innerHTML = "Please enter valid email ";
+          document.getElementById("textemail").style.color="Red";
+        }
+      });
+
+      //Phone Number Validation
+      var phoneField = document.getElementById('phoneField');
+      phoneField.addEventListener('keyup', function() {
+        var phoneValue = phoneField.value;
+        var output;
+        phoneValue = phoneValue.replace(/[^0-9]/g, ''); //expression for Number
+        var area = phoneValue.substr(0, 3);
+        var pre = phoneValue.substr(3, 3);
+        var tel = phoneValue.substr(6, 4);
+        if (area.length < 3) {
+          output = "(" + area;
+        } else if (area.length == 3 && pre.length < 3) {
+          output = "(" + area + ")-" + " " + pre;
+        } else if (area.length == 3 && pre.length == 3) {
+          output = "(" + area + ")-" + " " + pre + " - " + tel;
+        }
+        phoneField.value = output;
+
+        //Sim Card Type
+        if (area >= 621 && area <= 799) {
+          document.getElementById("text").innerHTML = "Jio";
+          document.getElementById("text").style.color="Green";
+        } else if (area >= 801 && area <= 920) {
+          document.getElementById("text").innerHTML = "Idea";
+          document.getElementById("text").style.color="Green";
+        } else if (area >= 921 && area <= 999) {
+          document.getElementById("text").innerHTML = "Vodafone";
+          document.getElementById("text").style.color="Green";
+        } else {
+          document.getElementById("text").innerHTML = "invalid number";
+          document.getElementById("text").style.color="Red";
+        }
+
+        //State Name
+        if (pre >= 100 && pre <= 110) {
+          document.getElementById("text1").innerHTML = ",Andhra Pradesh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 111 && pre <= 120) {
+          document.getElementById("text1").innerHTML = ",Arunachal Pradesh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 121 && pre <= 130) {
+          document.getElementById("text1").innerHTML = ",Assam";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 131 && pre <= 140) {
+          document.getElementById("text1").innerHTML = ",Bihar ";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 141 && pre <= 150) {
+          document.getElementById("text1").innerHTML = ",Chhattisgarh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 151 && pre <= 160) {
+          document.getElementById("text1").innerHTML = ",Goa";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 161 && pre <= 170) {
+          document.getElementById("text1").innerHTML = ",Gujarat";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 171 && pre <= 180) {
+          document.getElementById("text1").innerHTML = ",Haryana";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 181 && pre <= 190) {
+          document.getElementById("text1").innerHTML = ",Himachal Pradesh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 191 && pre <= 200) {
+          document.getElementById("text1").innerHTML = ",Jharkhand";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 201 && pre <= 210) {
+          document.getElementById("text1").innerHTML = ",Karnataka";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 211 && pre <= 220) {
+          document.getElementById("text1").innerHTML = ",Kerala";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 221 && pre <= 230) {
+          document.getElementById("text1").innerHTML = ",Madhya Pradesh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 231 && pre <= 240) {
+          document.getElementById("text1").innerHTML = ",Maharashtra";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 241 && pre <= 250) {
+          document.getElementById("text1").innerHTML = ",Manipur";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 251 && pre <= 260) {
+          document.getElementById("text1").innerHTML = ",Meghalaya";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 261 && pre <= 270) {
+          document.getElementById("text1").innerHTML = ",Mizoram";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 271 && pre <= 280) {
+          document.getElementById("text1").innerHTML = ",Nagaland";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 281 && pre <= 290) {
+          document.getElementById("text1").innerHTML = ",Odisha";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 291 && pre <= 300) {
+          document.getElementById("text1").innerHTML = ",Punjab";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 301 && pre <= 310) {
+          document.getElementById("text1").innerHTML = ",Rajasthan";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 311 && pre <= 320) {
+          document.getElementById("text1").innerHTML = ",Sikkim";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 321 && pre <= 330) {
+          document.getElementById("text1").innerHTML = ",Tamil Nadu";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 331 && pre <= 340) {
+          document.getElementById("text1").innerHTML = ",Telangana";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 341 && pre <= 350) {
+          document.getElementById("text1").innerHTML = ",Tripura";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 351 && pre <= 360) {
+          document.getElementById("text1").innerHTML = ",Uttar Pradesh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 361 && pre <= 370) {
+          document.getElementById("text1").innerHTML = ",Uttarakhand";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 371 && pre <= 380) {
+          document.getElementById("text1").innerHTML = ",West Bengal";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 381 && pre <= 390) {
+          document.getElementById("text1").innerHTML = ",Andaman and Nicobar ";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 391 && pre <= 400) {
+          document.getElementById("text1").innerHTML = ",Chandigarh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 401 && pre <= 410) {
+          document.getElementById("text1").innerHTML = ",Dadra Nagar Haveli and Daman Diu";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 411 && pre <= 420) {
+          document.getElementById("text1").innerHTML = ",Delhi";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 421 && pre <= 430) {
+          document.getElementById("text1").innerHTML = ",Jammu and Kashmir";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 431 && pre <= 440) {
+          document.getElementById("text1").innerHTML = ",Ladakh";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 441 && pre <= 450) {
+          document.getElementById("text1").innerHTML = ",Lakshadweep";
+          document.getElementById("text1").style.color="Green";
+        } else if (pre >= 451 && pre <= 460) {
+          document.getElementById("text1").innerHTML = ",Puducherry";
+          document.getElementById("text1").style.color="Green";
+        } else {
+          document.getElementById("text1").innerHTML = ",Enter valid state code";
+          document.getElementById("text1").style.color="Red";
+        }
+      });
+
+      //Submit Form and Store input Value in Local Storage
+      function myFunction() {
+        var name = document.getElementById('username').value;
+        var number = document.getElementById('phoneField').value;
+        localStorage.setItem('Fname', name);
+        localStorage.setItem('Number', number);
+        window.location = "otp-form.html";
+        var val = Math.floor(1000 + Math.random() * 9000); //Create 4 digit random Number
+        alert(val);
+        localStorage.setItem('OTP', val);
+        return;
+      }
+    </script>
+  </body>
+</html>
